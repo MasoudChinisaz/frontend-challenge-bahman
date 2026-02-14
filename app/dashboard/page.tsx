@@ -9,7 +9,6 @@ export default function DashboardPage() {
 
   return (
     <Stack spacing={8}>
-      {/* Welcome Section */}
       <Box>
         <Heading size="2xl" mb={2}>
           Welcome back, {user?.firstName || 'User'}!
@@ -19,7 +18,6 @@ export default function DashboardPage() {
         </Text>
       </Box>
 
-      {/* Quick Stats */}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={6}>
         <Card.Root 
           bg="white" 
@@ -128,7 +126,6 @@ export default function DashboardPage() {
         </Card.Root>
       </SimpleGrid>
 
-      {/* Quick Actions */}
       <Box>
         <Heading size="lg" mb={4}>Quick Actions</Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>

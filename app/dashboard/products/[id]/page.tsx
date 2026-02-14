@@ -35,7 +35,6 @@ export default function ProductDetailPage({
       </Button>
 
       <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={8}>
-        {/* Product Image */}
         <Box>
           <Card.Root overflow="hidden" bg="white">
             <Box position="relative" paddingBottom="100%" bg="gray.100">
@@ -68,7 +67,6 @@ export default function ProductDetailPage({
             </Box>
           </Card.Root>
 
-          {/* Additional Images */}
           {data.images && data.images.length > 1 && (
             <Grid templateColumns="repeat(4, 1fr)" gap={2} mt={4}>
               {data.images.slice(0, 4).map((img: string, idx: number) => (
@@ -99,14 +97,12 @@ export default function ProductDetailPage({
           )}
         </Box>
 
-        {/* Product Details */}
         <Stack spacing={6}>
           <Box>
             <Badge colorScheme="blue" mb={2}>{data.category}</Badge>
             <Heading size="2xl" mb={2}>{data.title}</Heading>
             <Text fontSize="lg" color="gray.600" mb={4}>{data.brand}</Text>
             
-            {/* Rating */}
             <Box display="flex" alignItems="center" gap={2} mb={4}>
               <Box display="flex" gap={0.5}>
                 {[...Array(5)].map((_, i) => (
@@ -126,7 +122,6 @@ export default function ProductDetailPage({
             </Box>
           </Box>
 
-          {/* Price */}
           <Box borderWidth="1px" borderRadius="lg" p={6} bg="gray.50">
             <Box display="flex" alignItems="baseline" gap={3} mb={2}>
               <Text fontSize="4xl" fontWeight="bold" color="blue.600">
@@ -145,13 +140,11 @@ export default function ProductDetailPage({
             )}
           </Box>
 
-          {/* Description */}
           <Box>
             <Heading size="md" mb={3}>Description</Heading>
             <Text color="gray.700" lineHeight="tall">{data.description}</Text>
           </Box>
 
-          {/* Additional Info */}
           <Card.Root>
             <Card.Body>
               <Grid templateColumns="1fr 1fr" gap={4}>
@@ -183,7 +176,6 @@ export default function ProductDetailPage({
             </Card.Body>
           </Card.Root>
 
-          {/* Tags */}
           {data.tags && data.tags.length > 0 && (
             <Box>
               <Text fontWeight="semibold" mb={2}>Tags</Text>

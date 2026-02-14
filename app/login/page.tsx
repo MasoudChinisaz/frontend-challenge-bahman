@@ -6,7 +6,6 @@ import {
   Button,
   Heading,
   Input,
-  VStack,
   Text,
   Card,
   Stack,
@@ -48,7 +47,6 @@ export default function LoginPage() {
       gradientTo='purple.600'
       p={4}
     >
-      {/* Back to Home Button */}
       <Button
         as={Link}
         href='/'

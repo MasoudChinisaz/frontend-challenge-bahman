@@ -18,7 +18,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   return (
     <Flex minH="100vh">
-      <Box w="260px" bg="gray.900" color="white" p={4}>
+      <Box position="fixed" zIndex="999" h="100%" w="260px" bg="gray.900" color="white" p={4}>
         <Heading size="md" mb={6}>Dashboard</Heading>
         <VStack align="stretch" spacing={3}>
           <Button as={Link} href="/dashboard">Home</Button>
@@ -27,7 +27,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <Button mt={8} onClick={logout}>Logout</Button>
         </VStack>
       </Box>
-      <Box flex="1" p={6} bg="gray.50">{children}</Box>
+      <Box ml="260px" flex="1" p={6} bg="gray.50">{children}</Box>
     </Flex>
   )
 }

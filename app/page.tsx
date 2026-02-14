@@ -6,7 +6,6 @@ import { Box, Heading, Text, Button, Stack, SimpleGrid, Card } from '@chakra-ui/
 export default function HomePage() {
   return (
     <Box minH="100vh" bg="gray.50">
-      {/* Hero Section */}
       <Box 
         position="relative"
         bgGradient="to-br"
@@ -16,7 +15,6 @@ export default function HomePage() {
         color="white"
         overflow="hidden"
       >
-        {/* Animated Background Pattern */}
         <Box 
           position="absolute"
           top={0}
@@ -37,9 +35,7 @@ export default function HomePage() {
           position="relative"
           textAlign="center"
         >
-          {/* Main Hero Content */}
           <Stack spacing={8} alignItems="center">
-            {/* Badge */}
             <Box 
               bg="whiteAlpha.200" 
               backdropFilter="blur(10px)"
@@ -54,7 +50,6 @@ export default function HomePage() {
               </Text>
             </Box>
 
-            {/* Heading */}
             <Heading 
               size="4xl" 
               lineHeight="1.2"
@@ -72,7 +67,6 @@ export default function HomePage() {
               </Box>
             </Heading>
 
-            {/* Subheading */}
             <Text 
               fontSize="xl" 
               maxW="2xl" 
@@ -83,7 +77,6 @@ export default function HomePage() {
               Chakra UI, and Tailwind CSS. Explore products, manage users, and discover games.
             </Text>
 
-            {/* CTA Buttons */}
             <Stack 
               direction={{ base: 'column', sm: 'row' }} 
               spacing={4}
@@ -137,7 +130,6 @@ export default function HomePage() {
         </Box>
       </Box>
 
-      {/* Features Section */}
       <Box maxW="7xl" mx="auto" px={8} py={20}>
         <Box textAlign="center" mb={16}>
           <Heading size="2xl" mb={4} color="gray.800">What's Inside</Heading>
@@ -147,7 +139,6 @@ export default function HomePage() {
         </Box>
 
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
-          {/* Feature 1 */}
           <Card.Root 
             bg="white" 
             shadow="lg"
@@ -182,7 +173,6 @@ export default function HomePage() {
             </Card.Body>
           </Card.Root>
 
-          {/* Feature 2 */}
           <Card.Root 
             bg="white" 
             shadow="lg"
@@ -217,7 +207,6 @@ export default function HomePage() {
             </Card.Body>
           </Card.Root>
 
-          {/* Feature 3 */}
           <Card.Root 
             bg="white" 
             shadow="lg"
@@ -250,7 +239,6 @@ export default function HomePage() {
             </Card.Body>
           </Card.Root>
 
-          {/* Feature 4 */}
           <Card.Root 
             bg="white" 
             shadow="lg"
@@ -282,7 +270,6 @@ export default function HomePage() {
             </Card.Body>
           </Card.Root>
 
-          {/* Feature 5 */}
           <Card.Root 
             bg="white" 
             shadow="lg"
@@ -316,7 +303,6 @@ export default function HomePage() {
             </Card.Body>
           </Card.Root>
 
-          {/* Feature 6 */}
           <Card.Root 
             bg="white" 
             shadow="lg"
@@ -352,7 +338,6 @@ export default function HomePage() {
         </SimpleGrid>
       </Box>
 
-      {/* CTA Section */}
       <Box bg="gray.100" py={20}>
         <Box maxW="4xl" mx="auto" textAlign="center" px={8}>
           <Heading size="2xl" mb={4} color="gray.800">Ready to Get Started?</Heading>

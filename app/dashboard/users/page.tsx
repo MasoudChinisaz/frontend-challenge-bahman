@@ -1,5 +1,5 @@
 'use client'
-import { Box, Heading, Spinner, Table, Text, Stack, Card, Badge, Button } from '@chakra-ui/react'
+import { Box, Heading, Spinner, Table, Text, Stack, Card, Badge } from '@chakra-ui/react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useEffect, useRef } from 'react'
 
@@ -26,7 +26,6 @@ export default function UsersPage() {
     initialPageParam: 0,
   })
 
-  // Infinite scroll observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -63,13 +62,11 @@ export default function UsersPage() {
   return (
     <Box>
       <Stack spacing={6}>
-        {/* Header */}
         <Box>
           <Heading size="xl" mb={2}>Users</Heading>
           <Text color="gray.600">Manage and view all users in the system</Text>
         </Box>
 
-        {/* Stats Cards */}
         <Box display="grid" gridTemplateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={4}>
           <Card.Root bg="white">
             <Card.Body>
@@ -91,7 +88,6 @@ export default function UsersPage() {
           </Card.Root>
         </Box>
 
-        {/* Users Table */}
         <Card.Root bg="white" overflow="hidden">
           <Table.Root variant="outline" size="lg">
             <Table.Header bg="gray.50">
@@ -168,10 +164,8 @@ export default function UsersPage() {
           </Table.Root>
         </Card.Root>
 
-        {/* Infinite Scroll Trigger */}
         <div ref={observerTarget} style={{ height: '20px' }} />
 
-        {/* Loading More Indicator */}
         {isFetchingNextPage && (
           <Box display="flex" alignItems="center" justifyContent="center" py={8}>
             <Spinner size="lg" color="blue.500" />
@@ -179,7 +173,6 @@ export default function UsersPage() {
           </Box>
         )}
 
-        {/* No More Results */}
         {!hasNextPage && allUsers.length > 0 && (
           <Box textAlign="center" py={8}>
             <Text color="gray.500">All users loaded ({allUsers.length} of {totalUsers})</Text>

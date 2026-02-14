@@ -57,7 +57,6 @@ export default function GameDetailPage({ params }: Props) {
         </Button>
 
         <Stack spacing={8}>
-          {/* Hero Section */}
           <Box
             position='relative'
             borderRadius='xl'
@@ -112,9 +111,7 @@ export default function GameDetailPage({ params }: Props) {
           </Box>
 
           <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={8}>
-            {/* Main Content */}
             <Stack spacing={6}>
-              {/* Description */}
               <Card.Root bg='white'>
                 <Card.Body>
                   <Heading size='lg' mb={4}>
@@ -133,7 +130,6 @@ export default function GameDetailPage({ params }: Props) {
                 </Card.Body>
               </Card.Root>
 
-              {/* Platforms */}
               {game.platforms && game.platforms.length > 0 && (
                 <Card.Root bg='white'>
                   <Card.Body>
@@ -157,7 +153,6 @@ export default function GameDetailPage({ params }: Props) {
                 </Card.Root>
               )}
 
-              {/* Genres & Tags */}
               {(game.genres?.length > 0 || game.tags?.length > 0) && (
                 <Card.Root bg='white'>
                   <Card.Body>
@@ -205,7 +200,6 @@ export default function GameDetailPage({ params }: Props) {
                 </Card.Root>
               )}
 
-              {/* Screenshots */}
               {game.short_screenshots && game.short_screenshots.length > 1 && (
                 <Card.Root bg='white'>
                   <Card.Body>
@@ -245,9 +239,7 @@ export default function GameDetailPage({ params }: Props) {
               )}
             </Stack>
 
-            {/* Sidebar */}
             <Stack spacing={6}>
-              {/* Game Info */}
               <Card.Root bg='white'>
                 <Card.Body>
                   <Heading size='md' mb={4}>
@@ -318,7 +310,6 @@ export default function GameDetailPage({ params }: Props) {
                 </Card.Body>
               </Card.Root>
 
-              {/* Ratings */}
               <Card.Root bg='white'>
                 <Card.Body>
                   <Heading size='md' mb={4}>
@@ -373,7 +364,6 @@ export default function GameDetailPage({ params }: Props) {
                 </Card.Body>
               </Card.Root>
 
-              {/* Links */}
               {(game.website || game.reddit_url) && (
                 <Card.Root bg='white'>
                   <Card.Body>

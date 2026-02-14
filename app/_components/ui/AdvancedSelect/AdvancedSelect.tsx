@@ -15,7 +15,6 @@ type Props = {
   onChange: (v: SelectItem[]) => void;
 };
 
-/* Measure helper (Type-safe) */
 function MeasureOnOpen<
   TScroll extends Element,
   TItem extends Element
@@ -41,19 +40,16 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
   const [tempSelected, setTempSelected] = useState<SelectItem[]>(value);
   const parentRef = useRef<HTMLDivElement>(null);
 
-  // Sync internal state with parent
   useEffect(() => {
     setTempSelected(value);
   }, [value]);
 
-  // Filtered items
   const filtered = useMemo(() => {
     return items.filter((item) =>
       item.label.toLowerCase().includes(query.toLowerCase()),
     );
   }, [items, query]);
 
-  // Virtualizer
   const rowVirtualizer = useVirtualizer<HTMLDivElement, HTMLDivElement>({
     count: filtered.length,
     getScrollElement: () => parentRef.current,
@@ -61,9 +57,7 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
     overscan: 5,
   });
 
-  // Actions
   const handleApply = () => onChange(tempSelected);
-  const handleCancel = () => setTempSelected(value);
   const handleSelectAll = () => setTempSelected(filtered);
   const handleClear = () => setTempSelected([]);
 
@@ -72,15 +66,13 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
       <Listbox value={tempSelected} onChange={setTempSelected} multiple>
         {({ open }) => (
           <>
-            {/* Fix virtualization measurement */}
             <MeasureOnOpen open={open} virtualizer={rowVirtualizer} />
 
-            {/* Trigger */}
-            <Listbox.Button className='w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-left shadow-sm hover:border-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none transition'>
+            <Listbox.Button className='w-full! bg-white border! border-gray-200! p-3! rounded-lg! px-4! py-2.5! text-left! shadow-sm! hover:border-gray-400! focus:ring-2! focus:ring-blue-500! focus:outline-none! transition!'>
               {value.length === 0 ? (
                 <span className='text-gray-500'>Select items...</span>
               ) : (
-                <span className='font-medium'>{value.length} selected</span>
+                <span className='font-medium text-gray-500'>{value.length} Selected</span>
               )}
             </Listbox.Button>
 
@@ -90,11 +82,10 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
               leaveFrom='opacity-100'
               leaveTo='opacity-0'
             >
-              <Listbox.Options className='absolute z-50 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden focus:outline-none'>
-                {/* Search */}
-                <div className='p-3 border-b bg-gray-50'>
+              <Listbox.Options className='absolute! z-50! mt-2! w-full! bg-white! border! border-gray-200! rounded-xl! shadow-xl! overflow-hidden! focus:outline-none!'>
+                <div className='p-3! border-b! bg-gray-50!'>
                   <input
-                    className='w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none'
+                    className='w-full! border! border-gray-300! rounded-md! px-3! py-2! text-sm! focus:ring-2! focus:ring-blue-500! focus:outline-none!'
                     placeholder='Search...'
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -102,8 +93,7 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
                   />
                 </div>
 
-                {/* Select All / Clear */}
-                <div className='flex gap-2 p-3 border-b'>
+                <div className='flex! gap-2! p-3! border-b!'>
                   <button
                     type='button'
                     onClick={(e) => {
@@ -111,7 +101,7 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
                       e.stopPropagation();
                       handleSelectAll();
                     }}
-                    className='flex-1 text-sm bg-blue-50 text-blue-600 py-2 rounded-md hover:bg-blue-100 transition'
+                    className='flex-1! text-sm! bg-blue-50! text-blue-600! py-2! rounded-md! hover:bg-blue-100! transition!'
                   >
                     Select All
                   </button>
@@ -122,16 +112,15 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
                       e.stopPropagation();
                       handleClear();
                     }}
-                    className='flex-1 text-sm bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200 transition'
+                    className='flex-1! text-sm! bg-gray-100! text-gray-700! py-2! rounded-md! hover:bg-gray-200! transition!'
                   >
                     Clear
                   </button>
                 </div>
 
-                {/* Virtualized List */}
-                <div ref={parentRef} className='max-h-64 overflow-y-auto'>
+                <div ref={parentRef} className='max-h-64! overflow-y-auto!'>
                   {filtered.length === 0 ? (
-                    <div className='px-4 py-8 text-center text-sm text-gray-500'>
+                    <div className='px-4! py-8! text-center! text-sm! text-gray-500!'>
                       No results found
                     </div>
                   ) : (
@@ -157,8 +146,8 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
                               transform: `translateY(${virtualRow.start}px)`,
                             }}
                             className={({ active }) =>
-                              `flex items-center px-4 cursor-pointer transition ${
-                                active ? "bg-blue-50" : "hover:bg-gray-50"
+                              `flex! items-center! px-4! cursor-pointer! transition! ${
+                                active ? "bg-blue-50!" : "hover:bg-gray-50!"
                               }`
                             }
                           >
@@ -168,7 +157,7 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
                                   type='checkbox'
                                   checked={selected}
                                   readOnly
-                                  className='mr-3 h-4 w-4 accent-blue-600'
+                                  className='mr-3! h-4! w-4! accent-blue-600!'
                                 />
                                 <span className='text-sm'>{item.label}</span>
                               </>
@@ -180,15 +169,14 @@ export default function AdvancedSelect({ items, value, onChange }: Props) {
                   )}
                 </div>
 
-                {/* Footer */}
-                <div className='flex items-center justify-between p-3 border-t bg-gray-50'>
-                  <span className='text-xs text-gray-500'>
+                <div className='flex! items-center! justify-between! p-3! border-t! bg-gray-50!'>
+                  <span className='text-xs! text-gray-500!'>
                     {tempSelected.length} selected
                   </span>
-                  <div className='flex gap-2'>
+                  <div className='flex! gap-2!'>
                     <button
                       onClick={handleApply}
-                      className='px-4 py-1.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition'
+                      className='px-4! py-1.5! text-sm! bg-blue-600! text-white! rounded-md! hover:bg-blue-700! transition!'
                     >
                       Apply
                     </button>

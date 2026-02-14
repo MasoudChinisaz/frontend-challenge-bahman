@@ -12,7 +12,6 @@ export default function GamesPage() {
   const [selectedPlatforms, setSelectedPlatforms] = useState<SelectItem[]>([])
   const observerTarget = useRef<HTMLDivElement>(null)
 
-  // Genre options
   const genreOptions: SelectItem[] = [
     { id: '4', label: 'Action', group: 'Main Genres' },
     { id: '51', label: 'Indie', group: 'Main Genres' },
@@ -31,7 +30,6 @@ export default function GamesPage() {
     { id: '6', label: 'Fighting', group: 'Other' },
   ]
 
-  // Platform options
   const platformOptions: SelectItem[] = [
     { id: '4', label: 'PC', group: 'Desktop' },
     { id: '187', label: 'PlayStation 5', group: 'Console' },
@@ -39,7 +37,7 @@ export default function GamesPage() {
     { id: '18', label: 'PlayStation 4', group: 'Console' },
     { id: '186', label: 'Xbox Series S/X', group: 'Console' },
     { id: '7', label: 'Nintendo Switch', group: 'Console' },
-    { id: '3', label: 'Xbox 360', group: 'Previous Gen' },
+    { id: '2', label: 'Xbox 360', group: 'Previous Gen' },
     { id: '14', label: 'PlayStation 3', group: 'Previous Gen' },
     { id: '21', label: 'Android', group: 'Mobile' },
     { id: '3', label: 'iOS', group: 'Mobile' },
@@ -87,7 +85,6 @@ export default function GamesPage() {
     initialPageParam: 1,
   })
 
-  // Infinite scroll observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -110,7 +107,6 @@ export default function GamesPage() {
     }
   }, [hasNextPage, isFetchingNextPage, fetchNextPage])
 
-  // Refetch when filters change
   useEffect(() => {
     refetch()
   }, [searchQuery, selectedGenres, selectedPlatforms, refetch])
@@ -121,7 +117,6 @@ export default function GamesPage() {
   return (
     <Box p={8} bg="gray.50" minH="100vh">
       <Stack spacing={6} maxW="7xl" mx="auto">
-        {/* Header with Navigation */}
         <Box display="flex" alignItems="center" justifyContent="space-between" flexWrap="wrap" gap={4}>
           <Box>
             <Heading size="2xl" mb={2} color="gray.800">Games Library</Heading>
@@ -132,13 +127,11 @@ export default function GamesPage() {
           </Button>
         </Box>
 
-        {/* Filters Section */}
         <Card.Root bg="white" shadow="md" borderWidth="1px">
           <Card.Body p={6}>
             <Stack spacing={4}>
               <Heading size="md">Filters</Heading>
               
-              {/* Search */}
               <Box>
                 <Text fontWeight="medium" mb={2}>Search Games</Text>
                 <Input 
@@ -147,12 +140,12 @@ export default function GamesPage() {
                   value={searchQuery} 
                   onChange={e => setSearchQuery(e.target.value)} 
                   bg="white"
-                  borderColor="gray.300"
+                  borderColor="gray.200"
+                  className='shadow-sm! rounded-lg! hover:border-gray-500! transition!'
                   _focus={{ borderColor: 'blue.500', shadow: 'md' }}
                 />
               </Box>
 
-              {/* Genre Filter */}
               <Box>
                 <Text fontWeight="medium" mb={2}>Genre</Text>
                 <AdvancedSelect
@@ -164,7 +157,6 @@ export default function GamesPage() {
                 />
               </Box>
 
-              {/* Platform Filter */}
               <Box>
                 <Text fontWeight="medium" mb={2}>Platform</Text>
                 <AdvancedSelect
@@ -176,7 +168,6 @@ export default function GamesPage() {
                 />
               </Box>
 
-              {/* Active Filters Summary */}
               {(selectedGenres.length > 0 || selectedPlatforms.length > 0 || searchQuery) && (
                 <Box 
                   display="flex" 
@@ -212,7 +203,6 @@ export default function GamesPage() {
           </Card.Body>
         </Card.Root>
 
-        {/* Results Count */}
         {!isLoading && (
           <Text color="gray.600">
             Found <strong>{totalCount.toLocaleString()}</strong> games
@@ -220,14 +210,12 @@ export default function GamesPage() {
           </Text>
         )}
 
-        {/* Loading State */}
         {isLoading && (
           <Box display="flex" alignItems="center" justifyContent="center" py={12}>
             <Spinner size="xl" color="blue.500" />
           </Box>
         )}
 
-        {/* Games Grid */}
         {!isLoading && (
           <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={6}>
             {allGames.map((game: any) => (
@@ -335,10 +323,8 @@ export default function GamesPage() {
           </SimpleGrid>
         )}
 
-        {/* Infinite Scroll Trigger */}
         <div ref={observerTarget} style={{ height: '20px' }} />
 
-        {/* Loading More Indicator */}
         {isFetchingNextPage && (
           <Box display="flex" alignItems="center" justifyContent="center" py={8}>
             <Spinner size="lg" color="blue.500" />
@@ -346,14 +332,12 @@ export default function GamesPage() {
           </Box>
         )}
 
-        {/* No More Results */}
         {!hasNextPage && allGames.length > 0 && (
           <Box textAlign="center" py={8}>
             <Text color="gray.500">You've reached the end of the results</Text>
           </Box>
         )}
 
-        {/* No Results */}
         {!isLoading && allGames.length === 0 && (
           <Box textAlign="center" py={12}>
             <Text fontSize="lg" color="gray.500">No games found. Try adjusting your filters.</Text>

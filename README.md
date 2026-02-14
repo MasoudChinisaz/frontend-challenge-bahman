@@ -129,13 +129,10 @@ const items: SelectItem[] = [
 ```
 app/
 ├── _components/
-│   ├── layout/
-│   │   └── Sidebar.tsx
 │   └── ui/
 │       └── AdvancedSelect/
 │           ├── AdvancedSelect.tsx   # Main component
 │           ├── types.ts              # TypeScript types
-│           └── utils.ts              # Helper functions
 ├── _context/
 │   └── AuthContext.tsx               # Authentication context
 ├── _hooks/
@@ -186,7 +183,7 @@ npm install
 
 2. Create `.env.local` file:
 ```env
-NEXT_PUBLIC_RAWG_API_KEY=your_rawg_api_key_here
+NEXT_PUBLIC_RAWG_KEY=your_rawg_api_key_here
 ```
 
 3. Run development server:
@@ -302,7 +299,7 @@ type SelectItem = {
 ## 🔒 Security Features
 
 1. JWT token authentication
-2. Protected routes with middleware
+2. Protected routes using client-side authentication checks with `useAuth` hook
 3. Secure API calls
 4. Environment variables for sensitive data
 
@@ -319,7 +316,7 @@ This project is created for evaluation purposes.
 
 ## 👨‍💻 Author
 
-Frontend Challenge Submission - Bahman 1403
+Frontend Challenge Submission - Bahman 1404
 
 ## 🙏 Acknowledgments
 

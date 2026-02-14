@@ -1,20 +1,22 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 
 const showcaseConfig = defineConfig({
+  globalCss: {
+    body: {
+      colorPalette: 'blue',
+    },
+  },
   theme: {
     tokens: {
-      colors: {
-        brand: {
-          50: { value: '#eef2ff' },
-          100: { value: '#e0e7ff' },
-          500: { value: '#6366f1' },
-          600: { value: '#4f46e5' },
-        },
-        gray: {
-          50: { value: '#f9fafb' },
-          100: { value: '#f3f4f6' },
-          900: { value: '#111827' },
-        },
+      fonts: {
+        body: { value: 'var(--font-outfit)' },
+      },
+    },
+    semanticTokens: {
+      radii: {
+        l1: { value: '0.125rem' },
+        l2: { value: '0.25rem' },
+        l3: { value: '0.375rem' },
       },
     },
   },
